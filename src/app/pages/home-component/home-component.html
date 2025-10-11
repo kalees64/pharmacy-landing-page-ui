@@ -143,9 +143,8 @@
 
       <!-- Health Conditions Grid -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-16">
+        @for(condition of healthConditions; track condition.title; let i = $index){
         <div
-          *ngFor="let condition of healthConditions; let i = index"
-          (click)="onConditionClick(condition)"
           class="group bg-[var(--bg-body) ] rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100 hover:border-[#00a6a6] hover:-translate-y-2"
           [style.animation-delay]="i * 50 + 'ms'"
           fade-up-one
@@ -169,6 +168,7 @@
             class="mt-4 h-1 w-0 bg-gradient-to-r from-[#00a6a6] to-[#0077b6] rounded-full group-hover:w-full transition-all duration-300 mx-auto"
           ></div>
         </div>
+        }
       </div>
 
       <!-- Apollo SBI Card Promo -->
@@ -226,9 +226,8 @@
 
       <!-- Brands Grid -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
+        @for(brand of brands; track brand.name;let i = $index){
         <div
-          *ngFor="let brand of brands; let i = index"
-          (click)="onBrandClick(brand)"
           class="group bg-[var(--bg-body)] rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-gray-100 hover:border-[#00a6a6] flex items-center justify-center hover:-translate-y-2"
           [style.animation-delay]="i * 50 + 'ms'"
           fade-up-one
@@ -244,6 +243,7 @@
             ></div>
           </div>
         </div>
+        }
       </div>
 
       <!-- View All Button -->
@@ -530,9 +530,8 @@
 
       <!-- Tests Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        @for(test of labTests; track test.id; let i = $index){
         <div
-          *ngFor="let test of labTests; let i = index"
-          (click)="onLabTestClick(test)"
           class="group relative bg-[var(--bg-body)] rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-gray-100 hover:border-[#00a6a6] hover:-translate-y-2"
           [style.animation-delay]="i * 50 + 'ms'"
           fade-up-one
@@ -597,6 +596,7 @@
             class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-[#00a6a6] to-[#0077b6] rounded-full group-hover:w-full transition-all duration-300"
           ></div>
         </div>
+        }
       </div>
 
       <!-- Mobile View All Button -->
