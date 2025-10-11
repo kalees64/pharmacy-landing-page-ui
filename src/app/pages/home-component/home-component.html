@@ -1,0 +1,1182 @@
+<main class="w-full min-h-screen bg-[var(--bg-body)] flex flex-col">
+  <app-home-header-component class="sticky top-0 z-5 bg-white"></app-home-header-component>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient py-12 px-4 max-sm:py-8 relative overflow-hidden" fade-up-one>
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-3xl animate-pulse"
+      ></div>
+      <div
+        class="absolute bottom-20 right-20 w-40 h-40 bg-white/10 rounded-full blur-3xl animate-pulse"
+        style="animation-delay: 1s"
+      ></div>
+      <div
+        class="absolute top-1/2 left-1/4 w-24 h-24 bg-white/5 rounded-full blur-2xl animate-pulse"
+        style="animation-delay: 0.5s"
+      ></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+      <!-- Main Heading -->
+      <div class="text-center mb-6">
+        <h2 class="text-5xl font-extrabold text-white mb-3 max-sm:text-3xl leading-tight">
+          Your Health,<br class="max-sm:hidden" />
+          <span class="text-yellow-300">Just a Click Away</span>
+        </h2>
+        <p class="text-white/90 text-lg max-sm:text-base font-light">
+          Order medicines & health products with ease
+        </p>
+      </div>
+
+      <!-- Enhanced Search Bar -->
+      <div class="mx-auto max-w-3xl mt-8">
+        <div
+          class="bg-white p-2 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300"
+        >
+          <div class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 max-sm:px-3">
+            <i class="ti ti-search text-[var(--color-primary)] text-2xl max-sm:text-xl"></i>
+            <input
+              type="search"
+              name="search"
+              id="search"
+              class="flex-1 focus:outline-none bg-transparent text-gray-700 placeholder:text-gray-400 text-base max-sm:text-sm"
+              placeholder="Search for medicines, vitamins, healthcare products..."
+              autocomplete="off"
+            />
+            <button
+              class="btn btn-primary rounded-lg px-6 py-2 max-sm:px-4 max-sm:text-sm whitespace-nowrap"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Search Pills -->
+        <div class="flex flex-wrap gap-2 mt-4 justify-center max-sm:gap-1.5">
+          <span
+            *ngFor="let tag of popularSearches"
+            class="px-4 py-1.5 bg-white/20 hover:bg-white/30 text-white text-sm rounded-full cursor-pointer transition-all backdrop-blur-sm max-sm:px-3 max-sm:py-1 max-sm:text-xs"
+            fade-up
+          >
+            {{ tag }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Hero Image with Features -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-sm:gap-6">
+        <div class="order-2 md:order-1">
+          <div class="grid grid-cols-2 gap-4 max-sm:gap-3">
+            <div
+              *ngFor="let feature of heroFeatures"
+              class="bg-white/10 backdrop-blur-md rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer max-sm:p-3"
+              fade-up
+            >
+              <div
+                class="size-12 bg-white rounded-full flex items-center justify-center mb-2 max-sm:size-10"
+              >
+                <i
+                  [class]="feature.icon + ' text-[var(--color-primary)] text-2xl max-sm:text-xl'"
+                ></i>
+              </div>
+              <h4 class="text-white font-bold text-sm max-sm:text-xs">{{ feature.title }}</h4>
+              <p class="text-white/80 text-xs mt-1">{{ feature.description }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <img
+            src="https://placehold.co/500x400/00a6a6/white?text=Pharmacy"
+            alt="Pharmacy"
+            class="w-full h-auto drop-shadow-2xl rounded"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Access Cards -->
+  <section class="py-6 px-4 mx-auto w-full">
+    <div
+      class="flex max-md:flex-col gap-3 items-center overflow-auto pb-2 max-sm:gap-2 max-lg:flex-wrap"
+    >
+      <div
+        *ngFor="let card of quickAccessCards"
+        [class]="
+          'rounded-2xl w-64  max-md:w-full p-4 flex gap-2 items-center hover:shadow-lg transition-shadow cursor-pointer max-sm:p-3 ' +
+          card.bgClass
+        "
+        fade-up-one
+      >
+        <div
+          [class]="
+            'size-10 rounded-full flex items-center justify-center max-sm:size-8 ' +
+            card.iconBgClass
+          "
+        >
+          <i [class]="card.icon + ' text-white text-xl max-sm:text-base'"></i>
+        </div>
+        <div class="flex-1">
+          <p class="font-semibold max-sm:text-sm">{{ card.title }}</p>
+          <p class="text-sm text-muted max-sm:text-xs">{{ card.subtitle }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Browse by Health Conditions Section -->
+  <section
+    class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[var(--bg-body)] to-[var(--bg-body)]/50"
+  >
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12 animate-fade-in">
+        <h2 class="text-4xl font-bold text-[var(--color-dark)] mb-3 tracking-tight">
+          Browse by Health Conditions
+        </h2>
+        <p class="text-lg text-[var(--text-muted)] max-w-2xl mx-auto">
+          Find specialized care for your health needs
+        </p>
+      </div>
+
+      <!-- Health Conditions Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-16">
+        <div
+          *ngFor="let condition of healthConditions; let i = index"
+          (click)="onConditionClick(condition)"
+          class="group bg-[var(--bg-body) ] rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100 hover:border-[#00a6a6] hover:-translate-y-2"
+          [style.animation-delay]="i * 50 + 'ms'"
+          fade-up-one
+        >
+          <div class="flex flex-col items-center text-center space-y-3">
+            <!-- Icon Container -->
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-[#00a6a6]/10 to-[#0077b6]/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+            >
+              <span class="text-3xl">{{ condition.icon }}</span>
+            </div>
+            <!-- Title -->
+            <h3
+              class="text-sm font-semibold text-[var(--color-dark)] group-hover:text-[#00a6a6] transition-colors duration-300"
+            >
+              {{ condition.title }}
+            </h3>
+          </div>
+          <!-- Hover Effect Line -->
+          <div
+            class="mt-4 h-1 w-0 bg-gradient-to-r from-[#00a6a6] to-[#0077b6] rounded-full group-hover:w-full transition-all duration-300 mx-auto"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Apollo SBI Card Promo -->
+      <div
+        class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-2xl"
+        fade-up-one
+      >
+        <div class="absolute inset-0 bg-gradient-to-r from-[#00a6a6]/20 to-[#0077b6]/20"></div>
+        <div class="relative grid md:grid-cols-2 gap-8 p-8 md:p-12 items-center">
+          <!-- Left Content -->
+          <div class="space-y-6">
+            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
+              Save Up to 25% on Your Medicine Spends
+              <span
+                class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#ffc107] to-[#ff9800]"
+              >
+                With Apollo SBI Card SELECT
+              </span>
+            </h3>
+            <button
+              class="px-8 py-3 bg-gradient-to-r from-[#ffc107] to-[#ff9800] text-gray-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-[#ffc107]/50 hover:scale-105 transition-all duration-300"
+            >
+              Apply Now
+            </button>
+          </div>
+          <!-- Right Content -->
+          <div class="flex items-center justify-center md:justify-end">
+            <div class="relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-[#00a6a6] to-[#0077b6] rounded-2xl blur-2xl opacity-30 animate-pulse"
+              ></div>
+              <div class="relative text-center">
+                <div class="text-5xl md:text-6xl mb-4">💳</div>
+                <p class="text-white text-lg font-medium">Health Meets Happiness</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted Brands Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--bg-body)]">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-[var(--color-dark)] mb-3 tracking-tight">
+          Trusted Brands
+        </h2>
+        <p class="text-lg text-[var(--text-muted)] max-w-2xl mx-auto">
+          Quality medicines from leading pharmaceutical companies
+        </p>
+      </div>
+
+      <!-- Brands Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
+        <div
+          *ngFor="let brand of brands; let i = index"
+          (click)="onBrandClick(brand)"
+          class="group bg-[var(--bg-body)] rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-gray-100 hover:border-[#00a6a6] flex items-center justify-center hover:-translate-y-2"
+          [style.animation-delay]="i * 50 + 'ms'"
+          fade-up-one
+        >
+          <div class="relative">
+            <img
+              [src]="brand.logo"
+              [alt]="brand.name"
+              class="h-40 w-full object-contain transition-all duration-300 rounded"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-[#00a6a6]/0 to-[#0077b6]/0 group-hover:from-[#00a6a6]/5 group-hover:to-[#0077b6]/5 rounded-lg transition-all duration-300"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- View All Button -->
+      <div class="text-center mt-12">
+        <button
+          class="px-8 py-3 bg-gradient-to-r from-[#00a6a6] to-[#0077b6] text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-[#00a6a6]/50 hover:scale-105 transition-all duration-300"
+        >
+          View All Brands
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-6 px-4 mx-auto max-w-7xl w-full">
+    <h3 class="text-2xl font-bold mb-4 max-sm:text-xl">Shop by Category</h3>
+    <div class="grid grid-cols-4 gap-4 max-sm:grid-cols-2 md:grid-cols-3">
+      <div
+        *ngFor="let category of categories"
+        class="bg-[var(--bg-card)] rounded-xl p-4 flex flex-col items-center gap-2 hover:shadow-lg transition-all cursor-pointer border border-[var(--border-color)]"
+        fade-up-one
+      >
+        <div
+          class="size-16 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center max-sm:size-12"
+        >
+          <i [class]="category.icon + ' text-white text-2xl max-sm:text-xl'"></i>
+        </div>
+        <p class="font-semibold text-center max-sm:text-sm">{{ category.name }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ask Apollo AI Section -->
+  <section
+    class="py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[var(--bg-body)]/50 to-[var(--bg-body)]"
+    fade-up-one
+  >
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 shadow-2xl"
+      >
+        <!-- Decorative background elements -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div class="absolute top-10 right-20 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-10 left-20 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+          <div
+            class="absolute top-1/2 left-1/3 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl animate-pulse"
+          ></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative grid md:grid-cols-2 gap-8 p-8 md:p-12 items-center">
+          <!-- Left Content -->
+          <div class="space-y-6 z-10">
+            <div
+              class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full"
+            >
+              <span class="text-2xl">🤖</span>
+              <span class="text-[var(--color-light)] font-semibold text-sm"
+                >AI-Powered Health Assistant</span
+              >
+            </div>
+
+            <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-light)] leading-tight">
+              Ask anything about your health.
+            </h2>
+
+            <p class="text-xl text-[var(--color-light)]/90 font-medium">
+              Get trusted answers directly from Apollo.
+            </p>
+
+            <button
+              (click)="onAskApollo()"
+              class="group flex items-center gap-3 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              <span class="text-2xl">💬</span>
+              <span>Ask Apollo</span>
+              <span class="text-xs bg-blue-500 px-2 py-1 rounded-full">beta</span>
+              <svg
+                class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+
+            <!-- Trust indicators -->
+            <div class="flex items-center gap-6 pt-4">
+              <div class="flex items-center gap-2 text-[var(--color-light)]/80">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <span class="text-sm font-medium">Trusted by millions</span>
+              </div>
+              <div class="flex items-center gap-2 text-[var(--color-light)]/80">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span class="text-sm font-medium">24/7 Available</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Content - Doctor Illustration -->
+          <div class="hidden md:flex items-center justify-center relative">
+            <div class="relative">
+              <!-- Floating icons animation -->
+              <div
+                class="absolute -top-8 -left-8 w-16 h-16 bg-[var(--bg-body)] rounded-2xl shadow-xl flex items-center justify-center animate-float"
+              >
+                <span class="text-3xl">❤️</span>
+              </div>
+              <div
+                class="absolute -top-4 -right-8 w-14 h-14 bg-[var(--bg-body)] rounded-2xl shadow-xl flex items-center justify-center animate-float-delayed"
+              >
+                <span class="text-2xl">💊</span>
+              </div>
+              <div
+                class="absolute -bottom-4 -left-4 w-12 h-12 bg-[var(--bg-body)] rounded-2xl shadow-xl flex items-center justify-center animate-float-slow"
+              >
+                <span class="text-2xl">🩺</span>
+              </div>
+              <div
+                class="absolute -bottom-8 -right-4 w-14 h-14 bg-[var(--bg-body)] rounded-2xl shadow-xl flex items-center justify-center animate-float"
+              >
+                <span class="text-2xl">➕</span>
+              </div>
+
+              <!-- Doctor illustration -->
+              <div
+                class="w-64 h-64 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl"
+              >
+                <span class="text-9xl">👨‍⚕️</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Begin Your Journey Section -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 bg-[var(--bg-body)]" fade-up-one>
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 border-2 border-orange-200 shadow-xl"
+      >
+        <!-- Decorative elements -->
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-200/30 to-transparent rounded-full blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-pink-200/30 to-transparent rounded-full blur-3xl"
+        ></div>
+
+        <div class="relative grid md:grid-cols-12 gap-8 p-8 md:p-12 items-center">
+          <!-- Left Content -->
+          <div class="md:col-span-5 space-y-4">
+            <div
+              class="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
+            >
+              <span>🤰</span>
+              <span>MomVerse Journey</span>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+              <span class="text-orange-600">Be in charge</span>
+              <span class="text-[var(--color-primary)]">
+                from planning your pregnancy to parenting.
+              </span>
+            </h2>
+          </div>
+
+          <!-- Journey Steps -->
+          <div class="md:col-span-6 flex items-center justify-center gap-4">
+            <div *ngFor="let step of journeySteps; let i = index" class="flex items-center">
+              <!-- Step Card -->
+              <div class="group relative">
+                <!-- Step number badge -->
+                <div
+                  class="absolute -top-3 -left-3 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg z-10"
+                >
+                  {{ step.step }}
+                </div>
+
+                <!-- Card -->
+                <div
+                  class="bg-[var(--bg-body)] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-orange-100 min-w-[140px]"
+                >
+                  <div class="flex flex-col items-center text-center space-y-3">
+                    <div
+                      class="w-16 h-16 bg-gradient-to-br from-orange-100 to-red-100 rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300"
+                    >
+                      {{ step.icon }}
+                    </div>
+                    <div>
+                      <h3 class="font-bold text-sm text-[var(--color-dark)] mb-1">
+                        {{ step.title }}
+                      </h3>
+                      <p class="text-xs text-[var(--color-dark)]/80">{{ step.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Arrow -->
+              <div
+                *ngIf="i < journeySteps.length - 1"
+                class="mx-2 text-orange-400 text-2xl font-bold"
+              >
+                →
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="md:col-span-3 flex justify-center md:justify-end">
+            <button
+              (click)="onBeginJourney()"
+              class="group px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 whitespace-nowrap"
+            >
+              <span class="flex items-center gap-2">
+                Begin Your Journey
+                <svg
+                  class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Lab Tests Section -->
+  <section
+    class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[var(--bg-body)] to-[var(--bg-body)]-50"
+  >
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <h2 class="text-4xl font-bold text-[var(--color-dark)] mb-2">Popular Lab Tests</h2>
+          <p class="text-lg text-[var(--text-muted)]">Quick and accurate diagnostic services</p>
+        </div>
+        <button
+          (click)="onViewAllTests()"
+          class="hidden md:flex items-center gap-2 px-6 py-3 text-[#00a6a6] hover:text-white bg-[var(--bg-body)] hover:bg-gradient-to-r hover:from-[#00a6a6] hover:to-[#0077b6] border-2 border-[#00a6a6] rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl"
+        >
+          View All Tests
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Tests Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div
+          *ngFor="let test of labTests; let i = index"
+          (click)="onLabTestClick(test)"
+          class="group relative bg-[var(--bg-body)] rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-gray-100 hover:border-[#00a6a6] hover:-translate-y-2"
+          [style.animation-delay]="i * 50 + 'ms'"
+          fade-up-one
+        >
+          <!-- Popular Badge -->
+          <div
+            *ngIf="test.popular"
+            class="absolute -top-3 -right-3 bg-gradient-to-r from-orange-500 to-red-500 text-[var(--bg-body)] text-xs font-bold px-4 py-2 rounded-full shadow-lg z-10 animate-pulse"
+          >
+            🔥 Popular
+          </div>
+
+          <div class="flex items-start gap-4">
+            <!-- Icon -->
+            <div
+              class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[#00a6a6]/10 to-[#0077b6]/10 rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300"
+            >
+              {{ test.icon }}
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <h3
+                class="font-bold text-[var(--color-dark)] mb-1 group-hover:text-[#00a6a6] transition-colors duration-300 line-clamp-2"
+              >
+                {{ test.name }}
+              </h3>
+              <p class="text-sm text-[var(--text-muted)] mb-3">{{ test.description }}</p>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2 text-sm text-[var(--text-muted)]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                    />
+                  </svg>
+                  <span
+                    >{{ test.testsIncluded }} Test{{
+                      test.testsIncluded > 1 ? 's' : ''
+                    }}
+                    Included</span
+                  >
+                </div>
+              </div>
+
+              <div class="mt-4 flex items-center justify-between">
+                <div class="text-2xl font-bold text-[var(--color-blue)]">₹{{ test.price }}</div>
+                <button
+                  class="px-4 py-2 bg-gradient-to-r from-[var(--color-blue)] to-[#0077b6] text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hover Effect Line -->
+          <div
+            class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-[#00a6a6] to-[#0077b6] rounded-full group-hover:w-full transition-all duration-300"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Mobile View All Button -->
+      <div class="md:hidden text-center">
+        <button
+          (click)="onViewAllTests()"
+          class="w-full px-6 py-4 bg-gradient-to-r from-[#00a6a6] to-[#0077b6] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+        >
+          View All Tests
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="py-6 px-4 mx-auto max-w-7xl w-full">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-2xl font-bold max-sm:text-xl">Trending Products</h3>
+      <a href="javascript:void(0)" class="text-primary font-semibold hover:underline max-sm:text-sm"
+        >View All</a
+      >
+    </div>
+    <div
+      class="grid grid-cols-4 gap-4 max-sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      <div
+        *ngFor="let product of products"
+        class="bg-[var(--bg-card)] rounded-xl overflow-hidden hover:shadow-xl transition-all cursor-pointer border border-[var(--border-color)]"
+        fade-up-one
+      >
+        <div class="h-48 bg-gray-200 flex items-center justify-center relative max-sm:h-40">
+          <img [src]="product.image" [alt]="product.name" class="w-full h-full object-cover" />
+          <span
+            *ngIf="product.discount"
+            class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold"
+          >
+            {{ product.discount }}% OFF
+          </span>
+        </div>
+        <div class="p-4">
+          <h4 class="font-semibold mb-1 max-sm:text-sm">{{ product.name }}</h4>
+          <p class="text-sm text-muted mb-2 max-sm:text-xs">{{ product.description }}</p>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xl font-bold text-primary max-sm:text-lg"
+                >₹{{ product.price }}</span
+              >
+              <span
+                *ngIf="product.originalPrice"
+                class="text-sm text-muted line-through ml-2 max-sm:text-xs"
+                >₹{{ product.originalPrice }}</span
+              >
+            </div>
+            <button class="btn btn-sm btn-primary max-sm:text-xs max-sm:px-2">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers Banner -->
+  <section class="py-6 px-4 mx-auto max-w-7xl w-full">
+    <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+      <div
+        *ngFor="let banner of banners"
+        [class]="'rounded-2xl p-6 text-white flex flex-col justify-center ' + banner.bgClass"
+        fade-up-one
+      >
+        <h3 class="text-3xl font-bold mb-2 max-sm:text-xl">{{ banner.title }}</h3>
+        <p class="text-lg mb-4 max-sm:text-sm">{{ banner.description }}</p>
+        <button class="btn bg-white text-black hover:bg-gray-100 w-fit max-sm:text-sm">
+          {{ banner.buttonText }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Health Articles -->
+  <section class="py-6 px-4 mx-auto max-w-7xl w-full">
+    <h3 class="text-2xl font-bold mb-4 max-sm:text-xl">Health Articles</h3>
+    <div class="grid grid-cols-3 gap-4 max-sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        *ngFor="let article of articles"
+        class="bg-[var(--bg-card)] rounded-xl overflow-hidden hover:shadow-lg transition-all cursor-pointer border border-[var(--border-color)]"
+        fade-up-one
+      >
+        <div class="h-40 bg-gray-200">
+          <img [src]="article.image" [alt]="article.title" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-4">
+          <span class="text-xs text-primary font-semibold">{{ article.category }}</span>
+          <h4 class="font-semibold mt-1 mb-2 max-sm:text-sm">{{ article.title }}</h4>
+          <p class="text-sm text-muted max-sm:text-xs">{{ article.excerpt }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Order Banner -->
+  <section
+    class="py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[var(--bg-body)] to-[var(--bg-body)]/50"
+    fade-up-one
+  >
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-orange-50 via-pink-50 to-rose-50 border-2 border-orange-200 shadow-xl"
+      >
+        <!-- Decorative elements -->
+        <div
+          class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-transparent rounded-full blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-pink-300/20 to-transparent rounded-full blur-3xl"
+        ></div>
+
+        <!-- Floating WhatsApp icons -->
+        <div
+          class="absolute top-8 right-20 w-12 h-12 bg-green-500/20 rounded-full blur-xl animate-pulse"
+        ></div>
+        <div
+          class="absolute bottom-12 left-32 w-16 h-16 bg-orange-500/20 rounded-full blur-xl animate-pulse"
+          style="animation-delay: 1s"
+        ></div>
+
+        <div class="relative grid md:grid-cols-12 gap-6 p-6 md:p-10 items-center">
+          <!-- Apollo Logo & Left Content -->
+          <div class="md:col-span-7 flex items-center gap-6">
+            <!-- Logo -->
+            <div class="flex-shrink-0 hidden sm:block">
+              <div
+                class="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center p-3"
+              >
+                <div class="text-center">
+                  <span class="text-2xl font-bold text-[#00a6a6]">Apollo</span>
+                  <p class="text-xs text-gray-600">Pharmacy</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Text Content -->
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse"
+                >
+                  <span class="w-2 h-2 bg-white rounded-full animate-ping"></span>
+                  NEW
+                </span>
+                <span class="text-sm font-semibold text-gray-600">Quick & Easy Ordering</span>
+              </div>
+
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+                <span class="text-gray-800">Yay! Now you can</span>
+                <br />
+                <span
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500"
+                >
+                  WHATSAPP
+                </span>
+                <span class="text-[#0077b6]"> TO ORDER</span>
+              </h2>
+
+              <p class="text-gray-600 text-sm md:text-base mb-4">
+                Order medicines instantly through WhatsApp. Fast, convenient, and secure!
+              </p>
+
+              <!-- WhatsApp Button -->
+              <div class="flex flex-wrap items-center gap-3">
+                <button
+                  (click)="onWhatsAppClick()"
+                  class="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                >
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                    />
+                  </svg>
+                  <span>WhatsApp {{ whatsappNumber }}</span>
+                  <svg
+                    class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  (click)="copyWhatsAppNumber()"
+                  class="p-3 bg-white hover:bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border-2 border-gray-200 hover:border-green-500 group"
+                  title="Copy number"
+                >
+                  <svg
+                    class="w-5 h-5 text-gray-600 group-hover:text-green-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Features -->
+              <div class="flex flex-wrap gap-4 mt-4">
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="font-medium">Instant Response</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="font-medium">No App Required</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="font-medium">24/7 Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Illustration -->
+          <div class="md:col-span-5 flex items-center justify-center relative">
+            <div class="relative">
+              <!-- Background glow -->
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-green-400/30 to-blue-400/30 rounded-full blur-3xl animate-pulse"
+              ></div>
+
+              <!-- Illustration -->
+              <div class="relative grid grid-cols-2 gap-4">
+                <!-- Pharmacist 1 -->
+                <div
+                  class="bg-[var(--bg-body)] rounded-2xl p-4 shadow-xl hover:scale-105 transition-transform duration-300"
+                >
+                  <div class="text-center">
+                    <div
+                      class="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full flex items-center justify-center text-4xl"
+                    >
+                      👩‍⚕️
+                    </div>
+                    <div class="text-xs font-semibold text-[var(--color-dark)]">Ready to Help</div>
+                  </div>
+                </div>
+
+                <!-- Pharmacist 2 -->
+                <div
+                  class="bg-[var(--bg-body)] rounded-2xl p-4 shadow-xl hover:scale-105 transition-transform duration-300"
+                  style="margin-top: 2rem"
+                >
+                  <div class="text-center">
+                    <div
+                      class="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center text-4xl"
+                    >
+                      👨‍⚕️
+                    </div>
+                    <div class="text-xs font-semibold text-[var(--color-dark)]">Expert Care</div>
+                  </div>
+                </div>
+
+                <!-- WhatsApp floating icon -->
+                <div
+                  class="absolute -top-4 -right-4 w-16 h-16 bg-green-500 rounded-full shadow-2xl flex items-center justify-center animate-bounce"
+                >
+                  <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                    />
+                  </svg>
+                </div>
+
+                <!-- Medicine icons -->
+                <div
+                  class="absolute -bottom-4 -left-4 w-12 h-12 bg-blue-500 rounded-xl shadow-lg flex items-center justify-center transform rotate-12 animate-pulse"
+                >
+                  <span class="text-2xl">💊</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--bg-body)]">
+    <div class="max-w-4xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <div
+          class="inline-flex items-center gap-2 bg-gradient-to-r from-[#00a6a6]/10 to-[#0077b6]/10 px-6 py-2 rounded-full mb-4"
+        >
+          <svg class="w-5 h-5 text-[#00a6a6]" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span class="text-[#00a6a6] font-semibold text-sm">Got Questions?</span>
+        </div>
+
+        <h2 class="text-4xl font-bold text-[var(--color-dark)] mb-3">Frequently Asked Questions</h2>
+        <p class="text-lg text-[var(--text-muted)]">
+          Find answers to common questions about our services
+        </p>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="space-y-4">
+        <div
+          *ngFor="let faq of visibleFaqs; let i = index"
+          class="group bg-[var(--bg-body)] border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-[#00a6a6] transition-all duration-300 hover:shadow-lg"
+          fade-up-one
+        >
+          <!-- Question -->
+          <button
+            (click)="toggleFaq(i)"
+            class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[var(--bg-body)] transition-colors duration-200"
+          >
+            <span class="font-semibold text-[var(--color-dark)] text-base pr-4">
+              {{ faq.question }}
+            </span>
+            <svg
+              class="w-6 h-6 text-[#00a6a6] flex-shrink-0 transition-transform duration-300"
+              [class.rotate-180]="faq.isExpanded"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <!-- Answer -->
+          <div
+            class="overflow-hidden transition-all duration-300"
+            [class.max-h-0]="!faq.isExpanded"
+            [class.max-h-96]="faq.isExpanded"
+          >
+            <div class="px-6 pb-5 pt-2 bg-gradient-to-b from-[#00a6a6]/5 to-transparent">
+              <p class="text-[var(--text-muted)] leading-relaxed">
+                {{ faq.answer }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Show More/Less Button -->
+      <div class="text-center mt-8">
+        <button
+          (click)="toggleShowAll()"
+          class="group inline-flex items-center gap-2 px-8 py-3 bg-[var(--bg-body)] hover:bg-gradient-to-r hover:from-[#00a6a6] hover:to-[#0077b6] text-gray-900 hover:text-white border-2 border-[#00a6a6] rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl"
+        >
+          <span class="text-[var(--color-dark)]">{{
+            showAllFaqs ? 'Show Less' : 'Show More'
+          }}</span>
+          <svg
+            class="w-5 h-5 transition-transform duration-300"
+            [class.rotate-180]="showAllFaqs"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Contact Support -->
+      <div
+        class="mt-12 text-center p-8 bg-gradient-to-r from-[var(--color-primary)]/50 to-[var(--color-blue)] rounded-2xl border-2 border-[var(--color-gray-light)]"
+        fade-up-one
+      >
+        <h3 class="text-xl font-bold text-[var(--color-dark)] mb-2">Still have questions?</h3>
+        <p class="text-[var(--text-muted)] mb-4">Our support team is here to help you 24/7</p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <button
+            (click)="onWhatsAppClick()"
+            class="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-[var(--color-light)] font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+          >
+            Chat on WhatsApp
+          </button>
+          <a
+            href="tel:+919345247247"
+            class="px-6 py-3 bg-gradient-to-r from-[#00a6a6] to-[#0077b6] hover:from-[#008c8c] hover:to-[#005f8f] text-[var(--color-light)] font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+          >
+            Call Us Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[var(--bg-card)] border-t border-[var(--border-color)] mt-8">
+    <div class="max-w-7xl mx-auto py-8 px-4">
+      <div class="grid grid-cols-4 gap-8 max-sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div fade-up-one>
+          <h4 class="font-bold mb-3 text-primary">About Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="javascript:void(0)" class="text-muted hover:text-primary">Company Info</a>
+            </li>
+            <li><a href="javascript:void(0)" class="text-muted hover:text-primary">Careers</a></li>
+            <li><a href="javascript:void(0)" class="text-muted hover:text-primary">Press</a></li>
+          </ul>
+        </div>
+        <div fade-up-one>
+          <h4 class="font-bold mb-3 text-primary">Customer Service</h4>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="javascript:void(0)" class="text-muted hover:text-primary">Help Center</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="text-muted hover:text-primary">Track Order</a>
+            </li>
+            <li><a href="javascript:void(0)" class="text-muted hover:text-primary">Returns</a></li>
+          </ul>
+        </div>
+        <div fade-up-one>
+          <h4 class="font-bold mb-3 text-primary">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="javascript:void(0)" class="text-muted hover:text-primary">Shop</a></li>
+            <li>
+              <a href="javascript:void(0)" class="text-muted hover:text-primary">Find Store</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="text-muted hover:text-primary"
+                >Upload Prescription</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div fade-up-one>
+          <h4 class="font-bold mb-3 text-primary">Connect With Us</h4>
+          <div class="flex gap-3">
+            <a
+              href="javascript:void(0)"
+              class="size-10 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center hover:opacity-80"
+            >
+              <i class="ti ti-brand-facebook text-xl"></i>
+            </a>
+            <a
+              href="javascript:void(0)"
+              class="size-10 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center hover:opacity-80"
+            >
+              <i class="ti ti-brand-twitter text-xl"></i>
+            </a>
+            <a
+              href="javascript:void(0)"
+              class="size-10 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center hover:opacity-80"
+            >
+              <i class="ti ti-brand-instagram text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="border-t border-[var(--border-color)] mt-6 pt-6 text-center text-sm text-muted"
+        fade-up-one
+      >
+        <p>&copy; 2025 Apollo Pharmacy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <div *ngIf="showButton" class="fixed bottom-6 right-6 z-50 animate-fade-in">
+    <!-- Main Button with Circular Progress -->
+    <button
+      (click)="scrollToTop()"
+      class="group relative w-14 h-14 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white rounded-full shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 flex items-center justify-center overflow-hidden"
+      aria-label="Scroll to top"
+    >
+      <!-- Circular Progress Ring -->
+      <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+        <!-- Background circle -->
+        <circle
+          cx="50"
+          cy="50"
+          r="45"
+          fill="none"
+          stroke="rgba(255, 255, 255, 0.2)"
+          stroke-width="4"
+        />
+        <!-- Progress circle -->
+        <circle
+          cx="50"
+          cy="50"
+          r="45"
+          fill="none"
+          stroke="white"
+          stroke-width="4"
+          stroke-linecap="round"
+          [attr.stroke-dasharray]="283"
+          [attr.stroke-dashoffset]="283 - (283 * scrollProgress) / 100"
+          class="transition-all duration-300"
+        />
+      </svg>
+
+      <!-- Arrow Icon -->
+      <svg
+        class="w-6 h-6 relative z-10 group-hover:-translate-y-1 transition-transform duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      </svg>
+
+      <!-- Ripple effect on click -->
+      <span
+        class="absolute inset-0 rounded-full bg-white opacity-0 group-active:opacity-20 group-active:animate-ping"
+      ></span>
+
+      <!-- Hover glow effect -->
+      <span
+        class="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"
+      ></span>
+    </button>
+
+    <!-- Optional: Tooltip -->
+    <div
+      class="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+    >
+      <div
+        class="bg-gray-900 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow-lg whitespace-nowrap"
+      >
+        Back to Top
+        <div
+          class="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"
+        ></div>
+      </div>
+    </div>
+  </div>
+</main>

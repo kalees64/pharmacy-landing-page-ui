@@ -1,1 +1,200 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+@import './assets/css/animations.css';
+
+:root {
+  color-scheme: light;
+
+  /* Fonts */
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Roboto', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+
+  /* colors */
+  /* Brand Colors */
+  --color-primary: light-dark(#00a6a6, #4dd0e1);
+  --color-secondary: light-dark(#0077b6, #5ca9e6);
+  --color-success: light-dark(#28a745, #4caf50);
+  --color-danger: light-dark(#dc3545, #ef5350);
+  --color-warning: light-dark(#ffc107, #ffca28);
+  --color-info: light-dark(#17a2b8, #29b6f6);
+  --color-light: light-dark(#f8f9fa, #343a40);
+  --color-dark: light-dark(#212529, #e9ecef);
+  --color-gray: light-dark(#6c757d, #adb5bd);
+  --color-purple: light-dark(#6f4eaf, #a073d1);
+  --color-pink: light-dark(#e91e63, #f06292);
+  --color-orange: light-dark(#ff9800, #ffa726);
+  --color-yellow: light-dark(#ffc107, #ffca28);
+  --color-green: light-dark(#4caf50, #66bb6a);
+  --color-blue: light-dark(#0077b6, #5ca9e6);
+  --color-red: light-dark(#dc3545, #ef5350);
+  --color-gray-light: light-dark(#f1f3f5, #2b2b2b);
+
+  /* Text Colors */
+  --text-primary: light-dark(#212529, #f8f9fa);
+  --text-secondary: light-dark(#495057, #ced4da);
+  --text-muted: light-dark(#6c757d, #adb5bd);
+
+  /* Backgrounds */
+  --bg-body: light-dark(#ffffffc4, #121212c4);
+  --bg-card: light-dark(#f9f9fb, #1e1e1e);
+
+  /* Borders */
+  --border-color: light-dark(#dee2e6, #2c2c2c);
+
+  &:has(#theme-toggle:checked) {
+    color-scheme: dark;
+  }
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-body);
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--bg-body);
+}
+
+button,
+a,
+i {
+  cursor: pointer;
+}
+
+i {
+  @apply text-2xl;
+}
+
+/* Base button */
+.btn {
+  @apply px-4 py-2 rounded font-bold cursor-pointer disabled:cursor-not-allowed border border-transparent transition-all duration-200;
+}
+
+/* Sizes */
+.btn-sm {
+  @apply px-3 py-1 text-sm;
+}
+.btn-lg {
+  @apply px-6 py-2.5 text-lg;
+}
+
+/* Primary variants */
+.btn-primary {
+  @apply bg-[var(--color-primary)] text-white border-[var(--color-primary)] hover:bg-white hover:text-[var(--color-primary)];
+}
+.btn-secondary {
+  @apply bg-[var(--color-secondary)] text-white border-[var(--color-secondary)] hover:bg-white hover:text-[var(--color-secondary)];
+}
+.btn-success {
+  @apply bg-[var(--color-success)] text-white border-[var(--color-success)] hover:bg-white hover:text-[var(--color-success)];
+}
+.btn-danger {
+  @apply bg-[var(--color-danger)] text-white border-[var(--color-danger)] hover:bg-white hover:text-[var(--color-danger)];
+}
+.btn-warning {
+  @apply bg-[var(--color-warning)] text-black border-[var(--color-warning)] hover:bg-white hover:text-[var(--color-warning)];
+}
+.btn-info {
+  @apply bg-[var(--color-info)] text-white border-[var(--color-info)] hover:bg-white hover:text-[var(--color-info)];
+}
+.btn-light {
+  @apply bg-[var(--color-light)] text-black border-[var(--color-light)] hover:bg-white hover:text-[var(--color-light)];
+}
+.btn-dark {
+  @apply bg-[var(--color-dark)] text-white border-[var(--color-dark)] hover:bg-white hover:text-[var(--color-dark)];
+}
+
+/* Outline variants */
+.btn-outline-primary {
+  @apply bg-transparent text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white;
+}
+.btn-outline-secondary {
+  @apply bg-transparent text-[var(--color-secondary)] border-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-white;
+}
+.btn-outline-success {
+  @apply bg-transparent text-[var(--color-success)] border-[var(--color-success)] hover:bg-[var(--color-success)] hover:text-white;
+}
+.btn-outline-danger {
+  @apply bg-transparent text-[var(--color-danger)] border-[var(--color-danger)] hover:bg-[var(--color-danger)] hover:text-white;
+}
+.btn-outline-warning {
+  @apply bg-transparent text-[var(--color-warning)] border-[var(--color-warning)] hover:bg-[var(--color-warning)] hover:text-black;
+}
+.btn-outline-info {
+  @apply bg-transparent text-[var(--color-info)] border-[var(--color-info)] hover:bg-[var(--color-info)] hover:text-white;
+}
+.btn-outline-light {
+  @apply bg-transparent text-[var(--color-light)] border-[var(--color-light)] hover:bg-[var(--color-light)] hover:text-black;
+}
+.btn-outline-dark {
+  @apply bg-transparent text-[var(--color-dark)] border-[var(--color-dark)] hover:bg-[var(--color-dark)] hover:text-white;
+}
+
+/* Text colors */
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-info {
+  color: var(--color-info);
+}
+
+.text-light {
+  color: var(--color-light);
+}
+
+.text-dark {
+  color: var(--color-dark);
+}
+
+/* Borders */
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.border-muted {
+  border-color: var(--text-muted);
+}
+
+.border-danger {
+  border-color: var(--color-danger);
+}
+
+.border-success {
+  border-color: var(--color-success);
+}
+
+.border-warning {
+  border-color: var(--color-warning);
+}
+
+.border-info {
+  border-color: var(--color-info);
+}

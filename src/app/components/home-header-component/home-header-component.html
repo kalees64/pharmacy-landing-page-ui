@@ -1,0 +1,85 @@
+<header
+  class="py-2 px-4 border-b border-[var(--border-color)] sticky top-0 z-50 bg-[var(--bg-body)] flex items-center justify-between max-sm:px-1"
+>
+  <div class="flex items-center">
+    <i class="ti ti-medicine-syrup text-4xl text-[var(--color-primary)] block"></i>
+
+    <h1 class="text-2xl text-primary font-bold m-0">Pharmacy</h1>
+  </div>
+
+  <div class="flex items-center gap-1">
+    <div class="size-10 rounded-full flex justify-center items-center">
+      <i class="ti ti-shopping-cart"></i>
+    </div>
+
+    <button class="size-10 rounded-full flex justify-center items-center" (click)="toggleTheme()">
+      @if(isDarkMode) {
+      <i class="ti ti-sun"></i>
+      }@else{
+      <i class="ti ti-moon"></i>
+      }
+    </button>
+    <button class="btn btn-outline-primary flex items-center gap-2 max-md:hidden">
+      <i class="ti ti-user-circle"></i>
+
+      Login
+    </button>
+    <button
+      class="size-10 rounded-full flex justify-center items-center md:hidden"
+      (click)="mobileMenuOpen = !mobileMenuOpen"
+    >
+      <i class="ti ti-menu-2"></i>
+    </button>
+
+    <div class="hidden">
+      <input type="checkbox" id="theme-toggle" [(ngModel)]="isDarkMode" />
+    </div>
+  </div>
+</header>
+
+<nav
+  class="py-2 px-4 border-b border-[var(--border-color)] bg-[var(--bg-body)] flex justify-center max-md:hidden"
+  aria-label="Desktop Menu"
+>
+  <ul class="flex items-center gap-4">
+    @for(menu of navLinks; track menu.id) {
+    <li>
+      <a
+        [routerLink]="menu.url"
+        class="flex items-center gap-2 font-semibold border-b-2 border-transparent text-primary hover:border-[var(--color-primary)]"
+      >
+        {{ menu.name }}
+      </a>
+    </li>
+    }
+  </ul>
+</nav>
+
+<nav
+  class="overflow-hidden transition-all duration-300 ease-in-out bg-[var(--bg-body)] border-b border-[var(--border-color)] md:hidden pb-2"
+  aria-label="Mobile Menu"
+  [ngStyle]="{
+    height: mobileMenuOpen ? 'auto' : '0px'
+  }"
+  *ngIf="mobileMenuOpen"
+>
+  <ul class="flex flex-col gap-2">
+    @for(menu of navLinks; track menu.id) {
+    <li>
+      <a
+        [routerLink]="menu.url"
+        class="block py-2 px-4 hover:bg-[var(--color-primary)] hover:text-white font-semibold"
+      >
+        {{ menu.name }}
+      </a>
+    </li>
+    }
+    <li>
+      <button
+        class="w-11/12 mx-auto btn btn-outline-primary flex items-center justify-center gap-2 py-2"
+      >
+        <i class="ti ti-user-circle"></i> Login
+      </button>
+    </li>
+  </ul>
+</nav>
